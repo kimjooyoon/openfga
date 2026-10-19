@@ -10,6 +10,7 @@ Try to keep listed changes to a concise bulleted list of simple explanations of 
 ### Added
 - Added a typed query AST and a `Querier` interface so backends can run queries as structured statements instead of hand-built SQL. This lays the groundwork for future SQL optimizations. [#3316](https://github.com/openfga/openfga/pull/3316)
   - **Breaking change:** This only applies if you use openfga as a library and implement a custom `RelationshipTupleReader`. The interface now has a `Querier` method which must be implemented (see `pkg/storage/adapter`). Returning `nil` is safe (especially for non-SQL datastores) but skips future SQL optimizations.
+- Implemented the `Querier` interface for SQLite. [#3322](https://github.com/openfga/openfga/pull/3322)
 
 ### Changed
 - Moved the build toolchain and Docker builder image to Go 1.27.3 and pinned golangci-lint to v2.15.0. The minimum Go version stays at `1.26.0`. [#3359](https://github.com/openfga/openfga/pull/3359)
